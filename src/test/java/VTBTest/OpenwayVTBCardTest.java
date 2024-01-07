@@ -23,7 +23,7 @@ public class OpenwayVTBCardTest extends BaseTest {
 
     @BeforeAll
     public static void beforeAll() {
-        System.setProperty("webdriver.chromedriver", "C:\\soft\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chromedriver", "C:\\soft\\Chromedriver\\chromedriver-win64\\chromedriver.exe");
         driver.get("https://ift-ibrb1-sharing.vtb.ru/login");
         driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
         driver.manage().window().maximize();

@@ -245,8 +245,8 @@ public class CardProfileTest extends BaseTest {
     }*/
 
     @AfterAll
-    @Test
     public static void quit(){
-        driver.quit();
+        driver.close();
+        //driver.quit();
     }
 }

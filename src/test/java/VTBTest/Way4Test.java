@@ -24,7 +24,7 @@ public class Way4Test extends BaseTest {
     @Test
     @DisplayName("Авторизация")
     public static void beforeAll() throws InterruptedException {
-        System.setProperty("webdriver.chromedriver", "C:\\soft\\chromedriver_win32\\chromedriver.exe");
+        //System.setProperty("webdriver.chromedriver", "C:\\soft\\Chromedriver\\chromedriver-win64\\chromedriver.exe");
         driver.get("https://ift-ibrb1-sharing.vtb.ru/login");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -221,7 +221,6 @@ public class Way4Test extends BaseTest {
     }*/
 
     @AfterAll
-    @Test
     public static void quit() {
         driver.quit();
     }

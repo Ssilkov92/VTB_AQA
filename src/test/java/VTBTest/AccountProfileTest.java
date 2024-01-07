@@ -23,7 +23,7 @@ public class AccountProfileTest extends BaseTest {
 
     @BeforeAll
     public static void beforeAll() {
-        System.setProperty("webdriver.chromedriver", "C:\\soft\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chromedriver", "C:\\soft\\Chromedriver\\chromedriver-win64\\chromedriver.exe");
         driver.get("https://ift-ibrb1-sharing.vtb.ru/login");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -231,9 +231,10 @@ public class AccountProfileTest extends BaseTest {
         accountProfile.checkTabRekv();
     }*/
 
-    @AfterAll
-    @Test
+   @AfterAll
+
     public static void quit() {
-        driver.quit();
+        driver.close();
+        //driver.quit();
     }
 }

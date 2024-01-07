@@ -23,7 +23,7 @@ public class OpenwayVTBAccountTest extends BaseTest {
 
     @BeforeAll
     public static void beforeAll() {
-        System.setProperty("webdriver.chromedriver", "C:\\soft\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chromedriver", "C:\\soft\\Chromedriver\\chromedriver-win64\\chromedriver.exe");
         driver.get("https://ift-ibrb1-sharing.vtb.ru/login");
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -189,10 +189,10 @@ public class OpenwayVTBAccountTest extends BaseTest {
         openwayVTBAccount.checkTabRekv();
     }*/
 
-   @AfterAll
-    @Test
-    public static void quit(){
+    @AfterAll
+    public static void quit() {
         driver.manage().deleteAllCookies();
+        driver.close();
         driver.quit();
     }
 }

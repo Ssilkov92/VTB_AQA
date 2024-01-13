@@ -1,228 +1,214 @@
-package VTBTest;/*Created by Stanislav Silkov */
+package VTBTest;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import ru.vtb.testing.VTB.Way4;
-import settings.BaseTest;
-
-import java.util.concurrent.TimeUnit;
+import pages.Way4Page;
+import settings.BaseSeleniumTest;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Карта Openway")
-public class Way4Test extends BaseTest {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class Way4Test extends BaseSeleniumTest {
 
-    static WebDriver driver = new ChromeDriver();
+    public static Way4Page way4Page = new Way4Page();
 
-    @BeforeAll
     @Test
-    @DisplayName("Авторизация")
-    public static void beforeAll() throws InterruptedException {
-        //System.setProperty("webdriver.chromedriver", "C:\\soft\\Chromedriver\\chromedriver-win64\\chromedriver.exe");
-        driver.get("https://ift-ibrb1-sharing.vtb.ru/login");
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        //public void a() throws InterruptedException {
-        Way4 way4 = new Way4(driver);
-        way4.Authorization2();
-    }
-
-
-/*    @Test
     @Order(1)
-    @DisplayName("Кнопка Логин при авторизации")
+    @DisplayName("Авторизация")
     public void a() throws InterruptedException {
-        Way4 way4 = new Way4(driver);
-        way4.Authorization2();
-    }*/
+        way4Page.Authorization2();
+    }
 
     @Test
     @Order(2)
     @DisplayName("Отображение кнопки Пополнить")
-    public void checkButtonPopolnit() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonPopolnit();
+    public void checkButtonPopolnit() throws InterruptedException {
+        way4Page.checkButtonPopolnit();
     }
 
     @Test
     @Order(3)
-    @DisplayName("Наличие кнопки Оплатить")
-    public void checkButtonOplatit() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonOplatit();
+    @DisplayName("Открыть переименование")
+    public void checkButtonOpenRename() {
+        way4Page.checkOpenRename();
     }
 
     @Test
     @Order(4)
-    @DisplayName("Раздел Информация")
-    public void checkPageInformation() {
-        Way4 way4 = new Way4(driver);
-        way4.openPageInformation();
+    @DisplayName("Закрыть переименование")
+    public void checkButtonCloseRename() {
+        way4Page.checkCloseRename();
     }
 
     @Test
     @Order(5)
-    @DisplayName("Наличие кнопки Как пользоваться картой")
-    public void checkButtonUsecard() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonUsecard();
+    @DisplayName("Наличие кнопки Оплатить")
+    public void checkButtonOplatit() {
+        way4Page.checkButtonOplatit();
     }
 
     @Test
     @Order(6)
-    @DisplayName("Наличие кнопки Сформировать выписку")
-    public void checkButtonMakeVipyska() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonMakeVipyska();
+    @DisplayName("Раздел Информация")
+    public void checkPageInformation() throws InterruptedException {
+        way4Page.openPageInformation();
     }
 
     @Test
     @Order(7)
-    @DisplayName("Наличие кнопки Заказать справку")
-    public void checkButtonMakeSpravka() throws InterruptedException {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonMakeSpravka();
+    @DisplayName("Наличие кнопки Как пользоваться картой")
+    public void checkButtonUsecard() {
+        way4Page.checkButtonUsecard();
     }
 
     @Test
     @Order(8)
-    @DisplayName("Переход в раздел Настройки")
-    public void checkPageSettings() {
-        Way4 way4 = new Way4(driver);
-        way4.openPageSettings();
+    @DisplayName("Наличие кнопки Отчёт о процентах")
+    public void checkButtonPercentReport() {
+        way4Page.checkButtonPercentReport();
     }
 
     @Test
     @Order(9)
-    @DisplayName("Наличие кнопки Изменить лимит")
-    public void checkButtonChangeLimit() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonChangeLimit();
+    @DisplayName("Наличие кнопки Сформировать выписку")
+    public void checkButtonMakeVipyska() {
+        way4Page.checkButtonMakeVipyska();
     }
 
     @Test
     @Order(10)
-    @DisplayName("Наличие кнопки сменить пин-код")
-    public void checkButtonChangePin() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonChangePin();
+    @DisplayName("Наличие кнопки Задолженность")
+    public void checkButtonDebt() {
+        way4Page.checkButtonDebt();
     }
 
     @Test
     @Order(11)
-    @DisplayName("Наличие кнопки Заблокировать")
-    public void checkButtonBlock() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonChangeBlock();
+    @DisplayName("Наличие кнопки Реквизиты")
+    public void checkButtonReqius() {
+        way4Page.checkButtonRequis();
     }
 
     @Test
     @Order(12)
-    @DisplayName("Наличие кнопки Рекомендовать карту")
-    public void checkButtonRecomend() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonRecomend();
+    @DisplayName("Наличие кнопки Заказать справку")
+    public void checkButtonMakeSpravka() throws InterruptedException {
+        way4Page.checkButtonMakeSpravka();
     }
 
     @Test
     @Order(13)
-    @DisplayName("Наличие кнопки Рефинансирование")
-    public void checkButtonRefinanc() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonRefinanc();
+    @DisplayName("Переход в раздел Настройки")
+    public void checkPageSettings() {
+        way4Page.openPageSettings();
     }
 
     @Test
     @Order(14)
-    @DisplayName("Наличие кнопки выпуска доп карты")
-    public void checkButtonAdditionalCard() {
-        Way4 way4 = new Way4(driver);
-        way4.checkButtonAdditionalCard();
+    @DisplayName("Наличие кнопки Изменить лимит")
+    public void checkButtonChangeLimit() {
+        way4Page.checkButtonChangeLimit();
     }
-
 
     @Test
     @Order(15)
-    @DisplayName("Раздел История операций")
-    public void checkPageHistoryOperation() {
-        Way4 way4 = new Way4(driver);
-        way4.pageHistoryOperation();
+    @DisplayName("Наличие кнопки сменить пин-код")
+    public void checkButtonChangePin() {
+        way4Page.checkButtonChangePin();
     }
 
     @Test
     @Order(16)
-    @DisplayName("Раздел Оформленные рассрочки")
-    public void checkpageHowUseCard() {
-        Way4 way4 = new Way4(driver);
-        way4.pageHowUseCard();
+    @DisplayName("Наличие кнопки Заблокировать")
+    public void checkButtonBlock() {
+        way4Page.checkButtonChangeBlock();
     }
 
+    @Test
     @Order(17)
+    @DisplayName("Наличие кнопки Рекомендовать карту")
+    public void checkButtonRecomend() {
+        way4Page.checkButtonRecomend();
+    }
+
+    @Test
+    @Order(18)
+    @DisplayName("Наличие кнопки Рефинансирование")
+    public void checkButtonRefinanc() {
+        way4Page.checkButtonRefinanc();
+    }
+
+    @Test
+    @Order(19)
+    @DisplayName("Наличие кнопки выпуска доп карты")
+    public void checkButtonAdditionalCard() {
+        way4Page.checkButtonAdditionalCard();
+    }
+
+    @Test
+    @Order(20)
+    @DisplayName("Раздел История операций")
+    public void checkPageHistoryOperation() {
+        way4Page.pageHistoryOperation();
+    }
+
+    @Test
+    @Order(21)
+    @DisplayName("Раздел Оформленные рассрочки")
+    public void checkpageHowUseCard() {
+        way4Page.pageHowUseCard();
+    }
+
+    @Order(22)
     @Test
     @DisplayName("Проверка вкладки Задолженность")
     public void checkTabDebt() {
-        Way4 way4 = new Way4(driver);
-        way4.clickTabDebt();
-    }
-
-    @Order(18)
-    @Test
-    @DisplayName("Наличие и клик блока Грейс период")
-    public void checkAccGrace() {
-        Way4 way4 = new Way4(driver);
-        way4.checkAccGrace();
-    }
-
-    @Order(19)
-    @Test
-    @DisplayName("Наличие и клик блока Задолженность")
-    public void checkAccDebt() {
-        Way4 way4 = new Way4(driver);
-        way4.checkAccDebt();
-    }
-
-
-    @Order(20)
-    @Test
-    @DisplayName("Наличие и клик блока Кредитный лимит")
-    public void checkAccCredLim() {
-        Way4 way4 = new Way4(driver);
-        way4.checkAccCredLim();
-    }
-
-    @Order(21)
-    @Test
-    @DisplayName("Наличие и клик блока Тарифы")
-    public void checkAccTarrifs() throws InterruptedException {
-        Way4 way4 = new Way4(driver);
-        way4.checkAccTarrifs();
-    }
-
-/*    @Order(22)
-    @Test
-    @DisplayName("Переход в Реквизиты")
-    public void clickTabReqv() {
-        Way4 way4 = new Way4(driver);
-        way4.clickTabReqv();
+        way4Page.clickTabDebt();
     }
 
     @Order(23)
     @Test
+    @DisplayName("Наличие и клик блока Грейс период")
+    public void checkAccGrace() {
+        way4Page.checkAccGrace();
+    }
+
+    @Order(24)
+    @Test
+    @DisplayName("Наличие и клик блока Задолженность")
+    public void checkAccDebt() {
+        way4Page.checkAccDebt();
+    }
+
+    @Order(25)
+    @Test
+    @DisplayName("Наличие и клик блока Кредитный лимит")
+    public void checkAccCredLim() {
+        way4Page.checkAccCredLim();
+    }
+
+    @Order(26)
+    @Test
+    @DisplayName("Наличие и клик блока Тарифы")
+    public void checkAccTarrifs(){
+        way4Page.checkAccTarrifs();
+    }
+
+    @Order(27)
+    @Test
+    @DisplayName("Переход в Реквизиты")
+    public void clickTabReqv() {
+        way4Page.clickTabReqv();
+    }
+
+    @Order(28)
+    @Test
     @DisplayName("Содержимое вкладки Реквизиты")
     public void checkTabReqv() {
-        Way4 way4 = new Way4(driver);
-        way4.checkTabRekv();
-    }*/
-
-    @AfterAll
-    public static void quit() {
-        driver.quit();
+        way4Page.checkTabRekv();
     }
 }
-

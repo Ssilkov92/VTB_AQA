@@ -1,221 +1,209 @@
 package VTBTest;
 
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import ru.vtb.testing.VTB.OpenwayVTBCard;
-import settings.BaseTest;
-
-import java.util.concurrent.TimeUnit;
+import pages.OpenwayVTBCardPage;
+import settings.BaseSeleniumTest;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Карта Openway_VTB")
-public class OpenwayVTBCardTest extends BaseTest {
-    public static WebDriver driver = new ChromeDriver();
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class OpenwayVTBCardTest extends BaseSeleniumTest {
 
-    //protected OpenwayVTBCard openwayVTBCard;
-
-    @BeforeAll
-    public static void beforeAll() {
-        System.setProperty("webdriver.chromedriver", "C:\\soft\\Chromedriver\\chromedriver-win64\\chromedriver.exe");
-        driver.get("https://ift-ibrb1-sharing.vtb.ru/login");
-        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
+    public static OpenwayVTBCardPage openwayVTBCardPage = new OpenwayVTBCardPage();
 
     @Test
     @Order(1)
     @DisplayName("Авторизация")
-    public void a() throws InterruptedException {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.Authorization2();
+    public void auth() throws InterruptedException {
+        openwayVTBCardPage.Authorization2();
     }
 
     @Test
     @Order(2)
     @DisplayName("Наличие кнопки Пополнить")
     public void checkButtonPopolnit() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonPopolnit();
+        openwayVTBCardPage.checkButtonPopolnit();
     }
 
     @Test
     @Order(3)
-    @DisplayName("Наличие кнопки Оплатить")
-    public void checkButtonOplatit() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonOplatit();
+    @DisplayName("Открыть переименование")
+    public void checkButtonOpenRename() {
+        openwayVTBCardPage.checkOpenRename();
     }
 
     @Test
     @Order(4)
-    @DisplayName("Переход в блок \"О карте\"")
-    public void clickPageInformation() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.openPageInformation();
+    @DisplayName("Закрыть переименование")
+    public void checkButtonCloseRename() {
+        openwayVTBCardPage.checkCloseRename();
     }
 
     @Test
     @Order(5)
-    @DisplayName("Наличие кнопки Как пользоваться картой")
-    public void checkButtonUsecard() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonUsecard();
+    @DisplayName("Наличие кнопки Оплатить")
+    public void checkButtonOplatit() {
+        openwayVTBCardPage.checkButtonOplatit();
     }
 
     @Test
     @Order(6)
-    @DisplayName("Наличие кнопки Сформировать выписку")
-    public void checkButtonMakeVipyska() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonMakeVipyska();
+    @DisplayName("Переход в блок \"О карте\"")
+    public void clickPageInformation() {
+        openwayVTBCardPage.openPageInformation();
     }
 
     @Test
     @Order(7)
-    @DisplayName("Наличие кнопки Заказать справку")
-    public void checkButtonMakeSpravka() throws InterruptedException {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonMakeSpravka();
+    @DisplayName("Наличие кнопки Как пользоваться картой")
+    public void checkButtonUsecard() {
+        openwayVTBCardPage.checkButtonUsecard();
     }
 
     @Test
     @Order(8)
-    @DisplayName("Переход в блок Настройки")
-    public void openPageSettings() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.openPageSettings();
+    @DisplayName("Наличие кнопки Задолженность")
+    public void checkButtonDebt() throws InterruptedException {
+        openwayVTBCardPage.checkButtonDebt();
     }
 
     @Test
     @Order(9)
-    @DisplayName("Наличие кнопки сменить пин-код")
-    public void checkButtonhangePin() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonhangePin();
+    @DisplayName("Наличие кнопки Реквизиты")
+    public void checkButtonReqv() throws InterruptedException {
+        openwayVTBCardPage.checkButtonRequis();
     }
 
     @Test
     @Order(10)
-    @DisplayName("Наличие кнопки Изменить лимит")
-    public void checkButtonChangeLimit() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonChangeLimit();
+    @DisplayName("Наличие кнопки Сформировать выписку")
+    public void checkButtonMakeVipyska() {
+        openwayVTBCardPage.checkButtonMakeVipyska();
     }
 
     @Test
     @Order(11)
-    @DisplayName("Наличие кнопки Заблокировать")
-    public void checkButtonBlock() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonChangeBlock();
+    @DisplayName("Наличие кнопки Заказать справку")
+    public void checkButtonMakeSpravka() throws InterruptedException {
+        openwayVTBCardPage.checkButtonMakeSpravka();
     }
 
     @Test
     @Order(12)
-    @DisplayName("Наличие кнопки Рекомендовать карту")
-    public void checkButtonRecomend() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonRecomend();
+    @DisplayName("Переход в блок Настройки")
+    public void openPageSettings() {
+        openwayVTBCardPage.openPageSettings();
     }
 
     @Test
     @Order(13)
-    @DisplayName("Раздел История операций")
-    public void checkPageHistoryOperation() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.pageHistoryOperation();
+    @DisplayName("Наличие кнопки сменить пин-код")
+    public void checkButtonhangePin() {
+        openwayVTBCardPage.checkButtonhangePin();
     }
 
     @Test
     @Order(14)
+    @DisplayName("Наличие кнопки Изменить лимит")
+    public void checkButtonChangeLimit() {
+        openwayVTBCardPage.checkButtonChangeLimit();
+    }
+
+    @Test
+    @Order(15)
+    @DisplayName("Наличие кнопки Заблокировать")
+    public void checkButtonBlock() {
+        openwayVTBCardPage.checkButtonChangeBlock();
+    }
+
+    @Test
+    @Order(16)
+    @DisplayName("Наличие кнопки Рекомендовать карту")
+    public void checkButtonRecomend() {
+        openwayVTBCardPage.checkButtonRecomend();
+    }
+
+    @Test
+    @Order(17)
+    @DisplayName("Раздел История операций")
+    public void checkPageHistoryOperation() {
+        openwayVTBCardPage.pageHistoryOperation();
+    }
+
+    @Test
+    @Order(18)
     @DisplayName("Раздел Оформленные рассрочки")
     public void checkpageRassrochki() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.pageRassrochki();
-    }
-
-    @Order(15)
-    @Test
-    @DisplayName("Проверка вкладки Задолженность")
-    public void checkTabDebt() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.clickTabDebt();
-    }
-
-    @Order(16)
-    @Test
-    @DisplayName("Наличие и клик блока Грейс период")
-    public void checkAccGrace() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkAccGrace();
-    }
-
-    @Order(17)
-    @Test
-    @DisplayName("Наличие и клик блока Задолженность")
-    public void checkAccDebt() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkAccDebt();
-    }
-
-
-    @Order(18)
-    @Test
-    @DisplayName("Наличие и клик блока Кредитный лимит")
-    public void checkAccCredLim() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkAccCredLim();
+        openwayVTBCardPage.pageRassrochki();
     }
 
     @Order(19)
     @Test
-    @DisplayName("Наличие и клик блока Тарифы")
-    public void checkAccTarrifs() throws InterruptedException {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkAccTarrifs();
+    @DisplayName("Проверка вкладки Задолженность")
+    public void checkTabDebt() {
+        openwayVTBCardPage.clickTabDebt();
     }
 
- /*   @Order(20)
+    @Order(20)
     @Test
-    @DisplayName("Переход в Реквизиты")
-    public void clickTabReqv() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.clickTabReqv();
+    @DisplayName("Наличие и клик блока Грейс период")
+    public void checkAccGrace() {
+        openwayVTBCardPage.checkAccGrace();
     }
 
     @Order(21)
     @Test
-    @DisplayName("Содержимое вкладки Реквизиты")
-    public void checkTabReqv() {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkTabRekv();
-    }*/
+    @DisplayName("Наличие и клик блока Задолженность")
+    public void checkAccDebt() {
+        openwayVTBCardPage.checkAccDebt();
+    }
+
 
     @Order(22)
     @Test
-    @DisplayName("Проверка кнопки Показать номер карты в подвале")
-    public void checkButtonCardNumberFooter() throws InterruptedException {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonCardNumberFooter();
+    @DisplayName("Наличие и клик блока Кредитный лимит")
+    public void checkAccCredLim() {
+        openwayVTBCardPage.checkAccCredLim();
     }
 
     @Order(23)
     @Test
-    @DisplayName("Проверка кнопки Показать номер карты вверху страницы")
-    public void checkButtonCardNumberHeader() throws InterruptedException {
-        OpenwayVTBCard openwayVTBCard = new OpenwayVTBCard(driver);
-        openwayVTBCard.checkButtonCardNumberHeader();
+    @DisplayName("Наличие и клик блока Тарифы")
+    public void checkAccTarrifs() throws InterruptedException {
+        openwayVTBCardPage.checkAccTarrifs();
     }
 
-    @AfterAll
-    public static void quit() {
-        driver.quit();
+    @Order(24)
+    @Test
+    @DisplayName("Переход в Реквизиты")
+    public void clickTabReqv() {
+        openwayVTBCardPage.clickTabReqv();
+    }
+
+    @Order(25)
+    @Test
+    @DisplayName("Содержимое вкладки Реквизиты")
+    public void checkTabReqv() {
+        openwayVTBCardPage.checkTabRekv();
+    }
+
+    @Order(26)
+    @Test
+    @DisplayName("Проверка кнопки Показать номер карты в подвале")
+    public void checkButtonCardNumberFooter() throws InterruptedException {
+        openwayVTBCardPage.checkButtonCardNumberFooter();
+    }
+
+    @Order(27)
+    @Test
+    @DisplayName("Проверка кнопки Показать номер карты вверху страницы")
+    public void checkButtonCardNumberHeader() throws InterruptedException {
+        openwayVTBCardPage.checkButtonCardNumberHeader();
     }
 }
